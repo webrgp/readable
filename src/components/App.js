@@ -11,6 +11,7 @@ import {
 
 import FilterLink from './FilterLink';
 import Dashboard from './Dashboard';
+import PostDetail from './PostDetail';
 
 class App extends Component {
 
@@ -39,21 +40,18 @@ class App extends Component {
           </p>
         </header>
         <Route exact path="/:category?" component={Dashboard} />
+        <Route exact path="/:category/:id" component={PostDetail} />
       </div>
     );
   }
 }
 
-function mapStateToProps (state) {
-  return {
-    categories: state.categories
-  }
-}
+const mapStateToProps  = ({ categories }) => ({
+  categories
+})
 
-function mapDispatchToProps (dispatch) {
-  return {
-    loadCategories: (data) => dispatch(loadCategories(data))
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  loadCategories: (data) => dispatch(loadCategories(data))
+})
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
