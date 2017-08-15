@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as ReadableAPI from '../utils/ReadableAPI';
 
 import {
   fetchPosts
@@ -48,15 +47,8 @@ class Dashboard extends Component {
   }
 }
 
-const getFilteredPosts = (posts, filter) => {
-  return filter ? posts.filter( p => p.category === filter) : posts;
-};
-
-const mapStateToProps  = ({ posts }, ownProps) => ({
-  posts: getFilteredPosts(
-    posts, 
-    ownProps.match.params.category
-  )
+const mapStateToProps  = ({ posts }) => ({
+  posts
 })
 
 const mapDispatchToProps = (dispatch) => ({

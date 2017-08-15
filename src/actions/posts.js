@@ -13,6 +13,12 @@ export const loadPosts = posts => ({
   posts
 });
 
+export const fetchPost = (id) => dispatch => (
+  ReadableAPI
+      .fetchPost(id)
+      .then(post => dispatch(loadPost(post)))
+);
+
 export const fetchPosts = (filter) => dispatch => (
   ReadableAPI
       .fetchPosts(filter)

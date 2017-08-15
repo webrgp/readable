@@ -3,11 +3,10 @@ import { combineReducers } from 'redux';
 import { LOAD_CATEGORIES } from '../actions/categories';
 
 import {
-  LOAD_POST,
   LOAD_POSTS
 } from '../actions/posts';
 
-function categories (state = [], action) {
+const categories = (state = [], action) => {
   const { categories } = action
   switch (action.type) {
     case LOAD_CATEGORIES:
@@ -17,21 +16,7 @@ function categories (state = [], action) {
   }
 }
 
-const initialPostState = {
-
-}
-
-function post (state = initialPostState, action) {
-  const { post } = action
-  switch (action.type) {
-    case LOAD_POST:
-      return post;
-    default:
-      return state;
-  }
-}
-
-function posts (state = [], action) {
+const posts = (state = [], action) => {
   const { posts } = action
   switch (action.type) {
     case LOAD_POSTS:
