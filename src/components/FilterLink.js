@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const FilterLink = ({filter, children}) => (
+const FilterLink = ({filter, exact = false, children}) => (
   <span>
     <NavLink
-      exact
+      exact={exact}
       to={filter}
       className='category-filter-link'
       activeStyle={{
