@@ -1,3 +1,5 @@
+import Moment from 'moment';
+
 const api = process.env.REACT_APP_READABLE_API_URL || 'http://localhost:5001'
 
 let token = localStorage.token
@@ -15,11 +17,25 @@ export const fetchCategories = () =>
     .then(res => res.json())
     .then(data => data.categories)
 
+    
 export const fetchPost = (id) => {
-  console.log('fetch id:', id);
   return fetch(`${api}/posts/${id}`, { headers })
     .then(res => res.json())
-    .then(data => data)
+    // format incoming data
+    .then(data => ({
+      ...data,
+      timestamp: Moment(data.timestamp).format('LLL')
+    }))
+}
+
+export const fetchComments = (id) => {
+  return fetch(`${api}/posts/${id}/comments`, { headers })
+    .then(res => res.json())
+    // format incoming data
+    .then(data => data.map(comment => ({
+      ...comment, 
+      timestamp: Moment(comment.timestamp).format('LLL')
+    })))
 }
 
 export const fetchPosts = (filter) => {

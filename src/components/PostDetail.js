@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Moment from 'moment';
 
 // import { Link } from 'react-router-dom';
 
 import {
-  fetchPost
+  fetchPost,
+  fetchComments
 } from '../actions/posts';
 
 class PostDetail extends Component {
@@ -13,25 +13,33 @@ class PostDetail extends Component {
   componentDidMount() {
     const id = this.props.match.params.id || false;
     this.props.fetchPost(id);
+    this.props.fetchComments(id);
   }
 
   componentWillReceiveProps(nextProps) {
     if( nextProps.match.params.id !== this.props.match.params.id ) {
       const id = this.props.match.params.id || false;
       this.props.fetchPost(id);
+      this.props.fetchComments(id);
     }
   }
 
   render () {
 
-    const { post } = this.props;
+    const { post, comments } = this.props;
 
     return (
       <div>
         {post && post.title && (
           <div>
             <h3>{post.title}</h3>
-            <p>{ Moment(post.timestamp).format('LL') }</p>
+            <p>{post.timestamp}</p>
+          </div>
+        )}
+
+        {comments.length && (
+          <div>
+            <h4>Comments ({comments.length})</h4>
           </div>
         )}
       </div>
@@ -39,12 +47,14 @@ class PostDetail extends Component {
   }
 }
 
-const mapStateToProps  = ({ post }, ownProps) => ({
-  post
+const mapStateToProps  = ({ post, comments }, ownProps) => ({
+  post,
+  comments
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchPost: (data) => dispatch(fetchPost(data))
+  fetchPost: (data) => dispatch(fetchPost(data)),
+  fetchComments: (data) => dispatch(fetchComments(data))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetail)

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-
 import { LOAD_CATEGORIES } from '../actions/categories';
 
 import {
   LOAD_POST,
+  LOAD_COMMENTS,
   LOAD_POSTS
 } from '../actions/posts';
 
@@ -27,6 +27,16 @@ const post = (state = [], action) => {
   }
 }
 
+const comments = (state = [], action) => {
+  const { comments } = action
+  switch (action.type) {
+    case LOAD_COMMENTS:
+      return comments;
+    default:
+      return state;
+  }
+}
+
 const posts = (state = [], action) => {
   const { posts } = action
   switch (action.type) {
@@ -39,6 +49,7 @@ const posts = (state = [], action) => {
 
 export default combineReducers({
   post,
+  comments,
   posts,
   categories,
 });;
