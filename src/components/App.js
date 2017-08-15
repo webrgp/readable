@@ -24,20 +24,20 @@ class App extends Component {
     const { categories } = this.props;
     return (
       <div className="app">
-        <ul>
-          <li>
+        <header>
+          <h1>Readable</h1>
+          <p>
             <FilterLink
               filter='/'
             >all</FilterLink>
-          </li>
-          {categories.map( category => (
-            <li key={category.path}>
+            {categories.map( category => (
               <FilterLink
+                key={category.path}
                 filter={`/${category.path}`}
               >{category.name}</FilterLink>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </p>
+        </header>
         <Route exact path="/:category?" component={Dashboard} />
       </div>
     );

@@ -20,13 +20,16 @@ class Dashboard extends Component {
     
     return (
       <div>
-        <h1 style={{ textTransform: 'capitalize' }}>Dashboard {this.props.match.params.category || 'all'}</h1>
+        <h3 style={{ textTransform: 'capitalize' }}>Dashboard {this.props.match.params.category || 'all'}</h3>
         <ul>
-          {posts.map( post => (
+          {posts.length ? posts.map( post => (
             <li key={post.id}>
               {post.title} ({post.category})
             </li>
-          ))}
+          ))
+          :
+          (<li>No posts in {this.props.match.params.category}</li>)
+          }
         </ul>
       </div>
     );
