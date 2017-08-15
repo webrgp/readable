@@ -15,7 +15,10 @@ export const getCategories = () =>
     .then(res => res.json())
     .then(data => data.categories)
 
-export const getPosts = () =>
-  fetch(`${api}/posts`, { headers })
+export const fetchPosts = (filter) => {
+  // console.log(filter);
+  const url = filter ? `${api}/${filter}/posts` : `${api}/posts`
+  return fetch(url, { headers })
     .then(res => res.json())
     .then(data => data)
+}

@@ -1,10 +1,20 @@
-//Post list
+import * as ReadableAPI from '../utils/ReadableAPI';
+
+export const LOAD_POST = 'LOAD_POST';
 export const LOAD_POSTS = 'LOAD_POSTS';
 
+export const loadPost = post => ({
+  type: LOAD_POST,
+  post
+});
 
-export function loadPosts (posts) {
-  return {
-    type: LOAD_POSTS,
-    posts
-  }
-}
+export const loadPosts = posts => ({
+  type: LOAD_POSTS,
+  posts
+});
+
+export const fetchPosts = (filter) => dispatch => (
+  ReadableAPI
+      .fetchPosts(filter)
+      .then(posts => dispatch(loadPosts(posts)))
+);
