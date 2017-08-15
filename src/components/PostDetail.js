@@ -37,9 +37,24 @@ class PostDetail extends Component {
           </div>
         )}
 
-        {comments.length && (
+        {comments.length ? (
           <div>
             <h4>Comments ({comments.length})</h4>
+
+            {comments.map( comment => (
+              <div key={comment.id}>
+                Author: {comment.author}<br />
+                Datetime: {comment.timestamp}<br />
+                Body: {comment.body}<br />
+                Votes: {comment.voteScore}<br />
+                <hr/>
+              </div>
+            ))}
+
+          </div>
+        ):(
+          <div>
+            <h4>No Comments</h4>
           </div>
         )}
       </div>
