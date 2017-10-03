@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { NavItem, NavLink as BSNavLink } from 'reactstrap';
+import { NavItem } from 'reactstrap';
 
-const NavItemLink = ({filter, exact = false, children}) => (
+const NavItemLink = ({filter, exact = false, className, children}) => (
   <NavItem>
     <NavLink
       exact={exact}
       to={filter}
-      className='nav-link'
+      className={ className || 'nav-link' }
     >
       {children}
     </NavLink>
