@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap';
 import NavItemLink from './NavItemLink';
 
 class AppHeader extends Component {
@@ -20,7 +20,7 @@ class AppHeader extends Component {
     
     return (
       <div>
-        <Navbar color="primary" dark expand="sm">
+        <Navbar light expand="sm" style={ {backgroundColor: '#e3f2fd'} }>
           <NavbarBrand href="/">Readable</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -41,6 +41,7 @@ class AppHeader extends Component {
               <NavItemLink
                 exact
                 filter='/new'
+                className="btn btn-primary"
               >Add Post</NavItemLink>
             </Nav>
           </Collapse>
