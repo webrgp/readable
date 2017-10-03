@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ import {
 } from '../actions/categories';
 
 
-import FilterLink from './FilterLink';
+import AppHeader from './AppHeader';
 import Dashboard from './Dashboard';
 import PostDetail from './PostDetail';
 
@@ -22,23 +22,14 @@ class App extends Component {
     const { categories } = this.props;
     return (
       <div className="app">
-        <header>
-          <h1>Readable</h1>
-          <p>
-            <FilterLink
-              exact
-              filter='/'
-            >all</FilterLink>
-            {categories.map( category => (
-              <FilterLink
-                key={category.path}
-                filter={`/${category.path}`}
-              >{category.name}</FilterLink>
-            ))}
-          </p>
-        </header>
-        <Route exact path="/:category?" component={Dashboard} />
-        <Route exact path="/:category/:id" component={PostDetail} />
+        <AppHeader categories={categories} />
+        <Switch>
+          <Route exact path="/new" render={() => (
+              <div>New Post</div>
+            )} />
+          <Route exact path="/:category?" component={Dashboard} />
+          <Route exact path="/:category/:id" component={PostDetail} />
+        </Switch>
       </div>
     );
   }
