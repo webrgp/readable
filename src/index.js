@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import thunk from 'redux-thunk';
 
+import 'bootstrap/dist/css/bootstrap.css';
+
 import App from  './components/App';
 
 import reducer from './reducers';
