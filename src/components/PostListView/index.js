@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+
+import PostItem from '../PostItem';
 
 import {
   fetchPosts
-} from '../actions/posts';
+} from '../../actions/posts';
 
 class PostListView extends Component {
 
@@ -26,22 +27,16 @@ class PostListView extends Component {
     
     return (
       <div className="container">
-        <h3 style={{ textTransform: 'capitalize' }}>Dashboard {this.props.match.params.category || 'all'}</h3>
-        <ul>
-          {posts.length ? posts.map( post => (
-            <li key={post.id}>
-              <Link
-                to={`/${post.category}/${post.id}`}
-              >
-                {post.title} ({post.category})
-              </Link>
-            </li>
-          )):(
-            <li>
-              No posts in {this.props.match.params.category}
-            </li>
-          )}
-        </ul>
+        {posts.length ? posts.map( post => (
+          <PostItem
+            key={post.id}
+            post={post}
+          />
+        )):(
+          <div>
+            No posts in {this.props.match.params.category}
+          </div>
+        )}
       </div>
     );
   }

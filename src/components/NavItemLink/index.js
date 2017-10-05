@@ -1,9 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { NavItem } from 'reactstrap';
 
 const NavItemLink = ({filter, exact = false, className, children}) => (
-  <NavItem>
+  <li className="nav-item">
     <NavLink
       exact={exact}
       to={filter}
@@ -11,7 +10,7 @@ const NavItemLink = ({filter, exact = false, className, children}) => (
     >
       {children}
     </NavLink>
-  </NavItem>
+  </li>
 )
 
 export default NavItemLink;

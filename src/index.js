@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
-import App from  './components/App';
+import App from  './App';
 
 import reducer from './reducers';
 

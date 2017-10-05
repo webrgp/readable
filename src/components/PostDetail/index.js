@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import {
   fetchPost,
   fetchComments
-} from '../actions/posts';
+} from '../../actions/posts';
 
 class PostDetail extends Component {
 

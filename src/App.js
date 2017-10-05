@@ -5,12 +5,12 @@ import { withRouter } from 'react-router-dom'
 
 import {
   fetchCategories
-} from '../actions/categories';
+} from './actions/categories';
 
 
-import AppHeader from './AppHeader';
-import PostListView from './PostListView';
-import PostDetail from './PostDetail';
+import AppHeader from './components/AppHeader';
+import PostListView from './components/PostListView';
+import PostDetail from './components/PostDetail';
 
 class App extends Component {
 
