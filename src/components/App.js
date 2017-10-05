@@ -9,7 +9,7 @@ import {
 
 
 import AppHeader from './AppHeader';
-import Dashboard from './Dashboard';
+import PostListView from './PostListView';
 import PostDetail from './PostDetail';
 
 class App extends Component {
@@ -27,7 +27,7 @@ class App extends Component {
           <Route exact path="/new" render={() => (
               <div>New Post</div>
             )} />
-          <Route exact path="/:category?" component={Dashboard} />
+          <Route exact path="/:category?" component={PostListView} />
           <Route exact path="/:category/:id" component={PostDetail} />
         </Switch>
       </div>

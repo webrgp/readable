@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap';
+import { Navbar, NavbarBrand, Nav } from 'reactstrap';
 import NavItemLink from './NavItemLink';
 
-class AppHeader extends Component {
-  
-  state = {
-    isOpen: false
-  }
+import './AppHeader.css';
 
-  toggle = () => {
-    this.setState((prevState) => ({
-      isOpen: !prevState.isOpen
-    }));
-  }
+class AppHeader extends Component {
 
   render () {
 
@@ -20,11 +12,10 @@ class AppHeader extends Component {
     
     return (
       <div>
-        <Navbar light expand="sm" style={ {backgroundColor: '#e3f2fd'} }>
+        <Navbar light expand className="navbar-app-header flex-column flex-md-row bd-navbar">
           <NavbarBrand href="/">Readable</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+          <div className="navbar-nav-scroll">
+            <Nav className="flex-row" navbar>
 
               <NavItemLink
                 exact
@@ -41,10 +32,10 @@ class AppHeader extends Component {
               <NavItemLink
                 exact
                 filter='/new'
-                className="btn btn-primary"
-              >Add Post</NavItemLink>
+                className="btn btn-primary btn-sm"
+              >add post</NavItemLink>
             </Nav>
-          </Collapse>
+          </div>
         </Navbar>
       </div>
     );
