@@ -6,7 +6,7 @@ import {
   fetchPosts
 } from '../actions/posts';
 
-class Dashboard extends Component {
+class PostListView extends Component {
 
   componentDidMount() {
     const filter = this.props.match.params.category || false;
@@ -25,7 +25,7 @@ class Dashboard extends Component {
     const { posts } = this.props;
     
     return (
-      <div>
+      <div className="container">
         <h3 style={{ textTransform: 'capitalize' }}>Dashboard {this.props.match.params.category || 'all'}</h3>
         <ul>
           {posts.length ? posts.map( post => (
@@ -55,4 +55,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchPosts: (data) => dispatch(fetchPosts(data))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(PostListView)
