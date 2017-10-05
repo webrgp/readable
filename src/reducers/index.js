@@ -11,7 +11,8 @@ const categories = (state = [], action) => {
   const { categories } = action
   switch (action.type) {
     case LOAD_CATEGORIES:
-      return categories;
+      const initArray = [ {name: "all", path: ""} ];
+      return initArray.concat(categories);
     default:
       return state;
   }
