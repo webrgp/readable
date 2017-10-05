@@ -19,7 +19,8 @@ class App extends Component {
   }
 
   render() {
-    const { categories } = this.props;
+    const { categories, location } = this.props;
+    console.log(location.pathname);
     return (
       <div className="app">
         <AppHeader categories={categories} />
