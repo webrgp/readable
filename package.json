@@ -16,6 +16,7 @@
     "react-icons": "^2.2.5",
     "react-loading": "^0.1.4",
     "react-modal": "^2.2.2",
+    "react-octicon": "^2.0.0",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.14",
