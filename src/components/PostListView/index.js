@@ -25,11 +25,10 @@ class PostListView extends Component {
 
   render () {
 
-    const { posts } = this.props.posts;
-    
+    const { posts } = this.props.posts;   
     return (
       <div className="container">
-        {posts !== undefined ? posts.map( post => (
+        {posts !== undefined && posts.length ? posts.map( post => (
           <PostItem
             key={post.id}
             post={post}
