@@ -34,3 +34,21 @@ export const fetchPosts = (filter) => {
     .then(res => res.json())
     .then(data => data)
 }
+
+/**
+ * Voting function for both posts and comments
+ * @param {String} id // Post's id
+ * @param {String} vote // upVote or downVote
+ * @param {String} type // posts or comments
+ */
+export const vote = (id, option, type) => {
+  const postData = { id: id, option: option };
+  const url = `${apiUrl}/${type}/${id}`;
+  return fetch(url, { 
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers 
+    })
+    .then(res => res.json())
+    .then(data => data);
+}

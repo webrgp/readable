@@ -1,6 +1,9 @@
 import * as ReadableAPI from '../utils/ReadableAPI';
 
-export const LOAD_POSTS = 'LOAD_POSTS';
+import { 
+  LOAD_POSTS
+} from './actionTypes';
+
 
 // LOAD_POSTS
 export const loadPosts = posts => ({

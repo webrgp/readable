@@ -26,6 +26,7 @@ class PostListView extends Component {
   render () {
 
     const { posts } = this.props.posts;   
+    
     return (
       <div className="container">
         {posts !== undefined && posts.length ? posts.map( post => (

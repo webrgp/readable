@@ -1,7 +1,9 @@
 import * as ReadableAPI from '../utils/ReadableAPI';
 
-export const LOAD_CATEGORIES = 'LOAD_CATEGORIES';
-export const SELECT_CATEGORY = 'SELECT_CATEGORY';
+import { 
+  LOAD_CATEGORIES, 
+  SELECT_CATEGORY 
+} from './actionTypes'
 
 export const loadCategories = categories => ({
   type: LOAD_CATEGORIES,

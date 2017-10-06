@@ -1,14 +1,14 @@
 import { 
-  LOAD_POST
+  VOTE 
 } from '../actions/actionTypes';
 
-const post = (state = {}, action) => {
-  const { post } = action
+const vote = (state = {}, action) => {
+  const { id, score } = action;
   switch (action.type) {
-    case LOAD_POST:
+    case VOTE:
       return {
         ...state,
-        post
+        [id]: score
       };
 
     default:
@@ -16,4 +16,4 @@ const post = (state = {}, action) => {
   }
 }
 
-export default post;
+export default vote;

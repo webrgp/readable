@@ -8,7 +8,7 @@ export default class PostControls extends Component {
 
     return (
       <div className="btn-toolbar">
-        <VoteControl score={post.voteScore} />
+        <VoteControl entry={post} />
       </div>
     );
   }
