@@ -10,6 +10,7 @@ const posts = (state = {}, action) => {
         ...state,
         posts
       };
+
     default:
       return state;
   }

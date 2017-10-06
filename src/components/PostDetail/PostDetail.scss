@@ -1,0 +1,20 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins/breakpoints";
+
+.PostDetail {
+
+  margin: 1rem 0;
+
+  time {
+    display: inline-block;
+    font-size: $small-font-size;
+    font-weight: $font-weight-normal;
+    margin-bottom: .5rem;
+  }
+
+  &--body {
+    margin: 1rem 0;
+  }
+
+}
