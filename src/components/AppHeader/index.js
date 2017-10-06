@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 
-import {
-  fetchCategories
-} from '../../actions/categories';
+import * as categoryActions from '../../actions/categories';
 
 import './AppHeader.css';
 
@@ -14,8 +12,8 @@ class AppHeader extends Component {
     this.props.fetchCategories();
   }
 
-  handleLinkClick = (category) => {
-    console.log(category);
+  handleLinkClick = (cat) => {
+    this.props.selectCategory(cat);
   }
 
   render () {
@@ -24,9 +22,11 @@ class AppHeader extends Component {
 
     return (
       <nav className="AppHeader flex-column flex-md-row bd-navbar navbar navbar-expand navbar-light">
-        <Link to='/'
+        <Link 
+          to='/'
           className='navbar-brand'
           alt='Readable'
+          onClick={ () => { this.handleLinkClick('none') } }
         >Readable</Link>
         <div className="navbar-nav-scroll">
           <ul className="flex-row navbar-nav">
@@ -54,12 +54,9 @@ class AppHeader extends Component {
   }
 }
 
-const mapStateToProps  = ({ categories }) => ({
-  categories
+const mapStateToProps  = ({ categories, selectedCategory }) => ({
+  categories,
+  selectedCategory
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchCategories: (data) => dispatch(fetchCategories(data))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
+export default connect(mapStateToProps, categoryActions)(AppHeader);
