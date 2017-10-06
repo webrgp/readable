@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import VoteControl from '../VoteControl';
-
+import PostControls from '../PostControls';
+import { fromNow } from '../../utils/helpers';
 import './PostItem.css';
 
 class PostItem extends Component {
@@ -10,13 +10,18 @@ class PostItem extends Component {
     const { post } = this.props;
 
     return (
-      <div className="PostItem">
-        <VoteControl score={post.voteScore} />
-        <div className="PostItem--summary">
+      <div className="PostItem card">
+        <div className="card-body">
           <h6>{post.category}</h6>
           <Link to={`/${post.category}/${post.id}`}>
-            <h3>{post.title}</h3>
+            <h4>{post.title}</h4>
           </Link>
+          <footer className="blockquote-footer">
+						Writte by {post.author}, { fromNow(post.timestamp)}
+					</footer>
+        </div>
+        <div className="card-footer">
+          <PostControls post={post} />
         </div>
       </div>
     );

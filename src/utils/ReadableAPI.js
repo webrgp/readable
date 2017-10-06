@@ -1,6 +1,6 @@
 import Moment from 'moment';
 
-const api = process.env.REACT_APP_READABLE_API_URL || 'http://localhost:3001'
+const apiUrl = process.env.REACT_APP_READABLE_API_URL || 'http://localhost:3001'
 
 let token = localStorage.token
 
@@ -9,17 +9,18 @@ if (!token)
 
 const headers = {
   'Accept': 'application/json',
+  'Content-Type': 'application/json',
   'Authorization': token
 }
 
 export const fetchCategories = () =>
-  fetch(`${api}/categories`, { headers })
+  fetch(`${apiUrl}/categories`, { headers })
     .then(res => res.json())
     .then(data => data.categories)
 
     
 export const fetchPost = (id) => {
-  return fetch(`${api}/posts/${id}`, { headers })
+  return fetch(`${apiUrl}/posts/${id}`, { headers })
     .then(res => res.json())
     // format incoming data
     .then(data => ({
@@ -29,7 +30,7 @@ export const fetchPost = (id) => {
 }
 
 export const fetchComments = (id) => {
-  return fetch(`${api}/posts/${id}/comments`, { headers })
+  return fetch(`${apiUrl}/posts/${id}/comments`, { headers })
     .then(res => res.json())
     // format incoming data
     .then(data => data.map(comment => ({
@@ -39,7 +40,7 @@ export const fetchComments = (id) => {
 }
 
 export const fetchPosts = (filter) => {
-  const url = filter ? `${api}/${filter}/posts` : `${api}/posts`
+  const url = filter ? `${apiUrl}/${filter}/posts` : `${apiUrl}/posts`
   return fetch(url, { headers })
     .then(res => res.json())
     .then(data => data)

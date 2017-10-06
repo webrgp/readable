@@ -1,20 +1,22 @@
 .VoteControl {
-  flex: 0 0 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
   button {
-    border: none;
-    background-color: transparent;
+
     cursor: pointer;
 
     &:focus {
       outline: none;
+      box-shadow: none;
     }
   }
 
-  span {
-    text-align: center;
+  &--post-score {
+    position: relative;
+    flex: 0 1 auto;
+    margin-bottom: 0;
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1.25;
+    padding: 0.5rem 0.75rem;
+    background-color: #fff;
   }
 }
