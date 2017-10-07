@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import * as voteActions from '../../actions/vote';
+import { postVote } from '../../actions/vote';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/fontawesome-free-solid'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import './VoteControl.css';
@@ -24,7 +24,6 @@ class VoteControl extends Component {
   render () {
 
     const { entry, vote } = this.props;
-    
     let score = (vote[entry.id] === undefined) ? entry.voteScore : vote[entry.id];
 
     return (
@@ -58,4 +57,4 @@ const mapStateToProps  = ({ vote }, ownProps) => ({
   vote
 })
 
-export default connect(mapStateToProps, voteActions)(VoteControl)
+export default connect(mapStateToProps, { postVote })(VoteControl)
