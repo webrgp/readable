@@ -34,8 +34,8 @@ class VoteControl extends Component {
         >
           <FontAwesomeIcon iconDefinition={faThumbsDown} flip="horizontal" />
         </button>
-        <span className={ "VoteControl--entry-score " +
-          ( score > 0 ? "text-success" : "text-danger" )
+        <span className={ "input-group-addon bg-white " +
+          ( score >= 0 ? "text-success" : "text-danger" )
         }>
           {score}
         </span>

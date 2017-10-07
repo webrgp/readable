@@ -14,13 +14,13 @@ const posts = (state = {}, action) => {
     
     case VOTE:
       const { id, score } = action;
-      const updatedPosts = state.posts.map((p) => {
+      const votedPosts = state.posts.map((p) => {
         if (p.id === id) { p.voteScore = score }
         return p;
       });
       return {
         ...state,
-        posts: updatedPosts
+        posts: votedPosts
       }
 
     default:

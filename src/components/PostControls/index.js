@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import VoteControl from '../VoteControl';
+import CommentsCountCountrol from '../CommentsCountCountrol';
 
 export default class PostControls extends Component {
   render () {
@@ -8,6 +9,7 @@ export default class PostControls extends Component {
 
     return (
       <div className="btn-toolbar">
+        <CommentsCountCountrol parentId={post.id} />
         <VoteControl entry={post} />
       </div>
     );
