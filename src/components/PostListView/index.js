@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import SortControl from '../SortControl';
 import PostItem from '../PostItem';
 
-import {
-  fetchPosts
-} from '../../actions/posts';
+import * as postsActions from '../../actions/posts';
 
 import './PostListView.css';
 
@@ -29,6 +28,7 @@ class PostListView extends Component {
     
     return (
       <div className="container">
+        <SortControl />
         {posts !== undefined && posts.length ? posts.map( post => (
           <PostItem
             key={post.id}
@@ -50,8 +50,4 @@ const mapStateToProps  = ({ posts }) => ({
   posts
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchPosts: (data) => dispatch(fetchPosts(data))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostListView)
+export default connect(mapStateToProps, postsActions)(PostListView)
