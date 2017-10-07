@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as postActions from '../../actions/post';
 import { longFormFormat, dateTimeFormat } from '../../utils/helpers';
+import PostControls from '../PostControls';
 
 import './PostDetail.css';
 
@@ -36,10 +37,14 @@ class PostDetail extends Component {
         </header>
 
         {post && post.body && (<div className="PostDetail--body">{post.body}</div>)}
-        
-        <footer>
-          <em>[Controls will go here]</em>
-        </footer>
+
+        {post && post.id && (
+          <div className="card">
+            <div className="card-footer">
+              <PostControls post={post} />
+            </div>
+          </div>
+        )}
 
       </article>
     );
