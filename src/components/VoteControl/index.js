@@ -7,18 +7,14 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import './VoteControl.css';
 
 const propTypes = {
-  entry: PropTypes.object,
-  type: PropTypes.oneOf(['posts', 'comments']).isRequired
-};
-
-const defaultProps = {
-  type: 'posts'
+  entry: PropTypes.object
 };
 
 class VoteControl extends Component {
   
-  vote = (id, option) => {
-    this.props.postVote(id, option, this.props.type);
+  vote = (entry, option) => {
+    const type = entry.hasOwnProperty('parentId') ? 'comments' : 'posts';
+    this.props.postVote(entry.id, option, type);
   }
 
   render () {
@@ -29,7 +25,7 @@ class VoteControl extends Component {
     return (
       <div className="VoteControl btn-group">
         <button className="btn btn-danger" 
-          onClick={ () => { this.vote(entry.id, 'downVote') } }
+          onClick={ () => { this.vote(entry, 'downVote') } }
         >
           <FontAwesomeIcon iconDefinition={faThumbsDown} flip="horizontal" />
         </button>
@@ -39,7 +35,7 @@ class VoteControl extends Component {
           {score}
         </span>
         <button className="btn btn-success"
-        onClick={ () => { this.vote(entry.id, 'upVote') } }
+        onClick={ () => { this.vote(entry, 'upVote') } }
         >
           <FontAwesomeIcon iconDefinition={faThumbsUp} />
         </button>
@@ -50,7 +46,6 @@ class VoteControl extends Component {
 
 
 VoteControl.propTypes = propTypes;
-VoteControl.defaultProps = defaultProps;
 
 
 const mapStateToProps  = ({ vote }, ownProps) => ({
