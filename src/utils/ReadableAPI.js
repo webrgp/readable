@@ -22,6 +22,19 @@ export const fetchPost = (id) =>
     .then(res => res.json())
     .then(data => data)
 
+export const addPost = ( post ) => {
+  const postData = {
+    ...post,
+    timstamp: new Date().getTime()
+  };
+
+  return fetch(`${apiUrl}/posts`, {
+    method: "POST", 
+    body: JSON.stringify(postData),
+    headers
+  }).then(res => res.json())
+    .then(data => data)
+}
 
 export const fetchPostComments = (id) => 
   fetch(`${apiUrl}/posts/${id}/comments`, { headers })
