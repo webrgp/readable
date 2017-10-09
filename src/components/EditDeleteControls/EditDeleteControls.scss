@@ -1,0 +1,18 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+.EditDeleteControls {
+
+  button {
+    cursor: pointer;
+    color: theme-color("secondary");
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+      border-color: transparent;
+      color: theme-color("dark");
+    }
+  }
+
+}

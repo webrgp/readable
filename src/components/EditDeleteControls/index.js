@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { faPencilAlt, faTrashAlt } from '@fortawesome/fontawesome-free-solid'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
+import './EditDeleteControls.css';
+
 /**
  * entry can be either a post or a commnent
  */
@@ -16,13 +18,13 @@ class EditDeleteControls extends Component {
     const { onDeleteClick, onEditClick } = this.props;
 
     return (
-      <div className="PostControls--edit-remove mr-0 ml-auto">
+      <div className="EditDeleteControls mr-0 ml-auto">
         <button 
-          className="btn btn-light"
+          className="btn"
           onClick={ onEditClick }
         ><FontAwesomeIcon iconDefinition={faPencilAlt} /></button>
         <button 
-          className="btn btn-light"
+          className="btn"
           onClick={ onDeleteClick }
         ><FontAwesomeIcon iconDefinition={faTrashAlt} /></button>
       </div>
