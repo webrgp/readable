@@ -8,7 +8,7 @@ const post = (state = {}, action) => {
     case LOAD_POST:
       return {
         ...state,
-        post
+        ...post
       };
 
     default:
