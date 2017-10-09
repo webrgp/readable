@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as postActions from '../../actions/post';
-import { longFormFormat, dateTimeFormat } from '../../utils/helpers';
+import { fromNow, dateTimeFormat } from '../../utils/helpers';
 import PostControls from '../PostControls';
 import CommentControls from '../CommentControls';
 
@@ -34,7 +34,7 @@ class PostDetail extends Component {
             <div className="card-body">
               <div className="card-subtitle">
                 <h6 className="mb-0">{post.author}</h6>
-                <time className="text-secondary" dateTime={ dateTimeFormat(post.timestamp)}>{ longFormFormat(post.timestamp)}</time>
+                <time className="text-secondary" dateTime={ dateTimeFormat(post.timestamp)}>{ fromNow(post.timestamp)}</time>
               </div>
               <h4 className="card-title">{post.title}</h4>
               <div className="PostDetail--body">{post.body}</div>
@@ -44,7 +44,7 @@ class PostDetail extends Component {
               <PostControls post={post} />
             </div>
 
-            {postComments && postComments.length && (
+            {postComments && postComments.length > 0 && (
               <div className="mt-2">
                 <div className="card-body">
                   <h6 className="card-subtitle text-muted">Comments ({postComments.length})</h6>
