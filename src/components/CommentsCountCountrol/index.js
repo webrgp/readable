@@ -27,7 +27,7 @@ class CommentsCountCountrol extends Component {
     const commentCount = this.commentCount( comments[parentId] );
 
     return (
-      <div className="CommentsCountCountrol input-group mr-2">
+      <div className="CommentsCountCountrol input-group ml-2">
         <span className="input-group-addon">
           <FontAwesomeIcon iconDefinition={faComments} />
         </span>

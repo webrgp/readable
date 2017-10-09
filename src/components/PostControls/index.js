@@ -18,8 +18,8 @@ export default class PostControls extends Component {
     return (
       <div className="PostControls">
         <div className="btn-toolbar">
-          <CommentsCountCountrol parentId={post.id} />
           <VoteControl entry={ post } />
+          <CommentsCountCountrol parentId={post.id} />
           <div className="PostControls--edit-remove mr-0 ml-auto">
             <button className="btn btn-light"><FontAwesomeIcon iconDefinition={faPencilAlt} /></button>
             <button 
