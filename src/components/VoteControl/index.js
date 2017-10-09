@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { postVote } from '../../actions/vote';
-import { faThumbsUp, faThumbsDown } from '@fortawesome/fontawesome-free-solid'
+import { faChevronUp, faChevronDown } from '@fortawesome/fontawesome-free-solid'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import './VoteControl.css';
 
@@ -27,20 +27,16 @@ class VoteControl extends Component {
 
     return (
       <div className="VoteControl btn-group">
-        <button className="btn btn-danger" 
+        <button className="btn" 
           onClick={ () => { this.vote(entry, 'downVote') } }
         >
-          <FontAwesomeIcon iconDefinition={faThumbsDown} flip="horizontal" />
+          <FontAwesomeIcon iconDefinition={faChevronDown} flip="horizontal" />
         </button>
-        <span className={ "input-group-addon bg-white " +
-          ( score >= 0 ? "text-success" : "text-danger" )
-        }>
-          {score}
-        </span>
-        <button className="btn btn-success"
+        <span className="input-group-addon">{score}</span>
+        <button className="btn"
         onClick={ () => { this.vote(entry, 'upVote') } }
         >
-          <FontAwesomeIcon iconDefinition={faThumbsUp} />
+          <FontAwesomeIcon iconDefinition={faChevronUp} />
         </button>
       </div>
     );

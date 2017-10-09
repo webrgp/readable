@@ -1,11 +1,42 @@
-.VoteControl {
-  button {
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
 
+.VoteControl {
+  margin-right: 1rem;
+  
+  button {
     cursor: pointer;
+    padding-left: 0px;
+    padding-right: 0px;
+    color: theme-color("secondary");
+    background-color: transparent;
+    border-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+      border-color: transparent;
+      color: theme-color("dark");
+    }
 
     &:focus {
       outline: none;
       box-shadow: none;
+    }
+
+    &:first-child {
+      margin-right: .5rem;
+    }
+  }
+
+  .input-group-addon {
+    padding-left: 0px;
+    padding-right: 0px;
+    color: theme-color("secondary");
+    background-color: transparent;
+    border-color: transparent;
+
+    & + button {
+      margin-left: .5rem;
     }
   }
 }

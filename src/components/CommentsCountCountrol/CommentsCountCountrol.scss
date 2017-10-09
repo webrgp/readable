@@ -1,0 +1,12 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+.CommentsCountCountrol {
+  .input-group-addon {
+    padding-left: 4px;
+    padding-right: 4px;
+    color: theme-color("secondary");
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
