@@ -45,7 +45,7 @@ class AppHeader extends Component {
                 exact
                 to='/new'
                 className="nav-link"
-              >add post</NavLink>
+              >new post</NavLink>
             </li>
           </ul>
         </div>
