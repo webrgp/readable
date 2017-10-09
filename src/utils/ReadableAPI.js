@@ -25,7 +25,7 @@ export const fetchPost = (id) =>
 export const addPost = ( post ) => {
   const postData = {
     ...post,
-    timstamp: new Date().getTime()
+    timestamp: new Date().getTime()
   };
 
   return fetch(`${apiUrl}/posts`, {
