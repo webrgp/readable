@@ -6,7 +6,7 @@ import { fetchPost } from '../../actions/post';
 import { addNewComment } from '../../actions/comments';
 import { fromNow, dateTimeFormat } from '../../utils/helpers';
 import PostControls from '../PostControls';
-import CommentControls from '../CommentControls';
+import PostComments from '../PostComments';
 
 import './PostDetail.css';
 
@@ -24,16 +24,7 @@ class PostDetail extends Component {
     }
   }
 
-  // Sort by date asc
-  sortCommentsByDate = ( comments ) => {
-    if( comments !== undefined ) {
-      return comments.sort((a, b) => a.timestamp > b.timestamp);
-    } else {
-      return comments;
-    }
-  }
-
-  handleCommentSubmit = ( event ) => {
+  handleNewComment = ( event ) => {
     event.preventDefault();
     const postId = this.props.post.id;
     const serializedComment = FormSerialize(event.target, {hash: true});
@@ -44,7 +35,6 @@ class PostDetail extends Component {
       parentId: postId
     }
     this.props.addNewComment(comment);
-    this.commentForm.reset();
   }
 
   render () {
@@ -55,7 +45,7 @@ class PostDetail extends Component {
 
     return (
       <article className="PostDetail container">
-        {post && post.title && (
+        {post && post.title ? (
           <div className="card">
             <div className="card-body">
               <div className="card-subtitle">
@@ -71,50 +61,18 @@ class PostDetail extends Component {
             </div>
 
             {postComments && (
-              <div className="mt-2">
-                <div className="card-body">
-                  <h6 className="card-subtitle text-muted">
-                    {postComments.length ? `Comments (${postComments.length})` : "No comments"}
-                  </h6>
-                </div>
-                <ul className="list-group list-group-flush">
-                  { this.sortCommentsByDate(postComments).map( comment => (
-                    <li 
-                      key={comment.id}
-                      className="list-group-item"
-                    >
-                      <strong>{comment.author}: </strong> {comment.body}
-                      <CommentControls comment={comment} />
-                    </li>
-                  ))}
-                  <li className="list-group-item bg-light">
-                    <h6 className="mb-4 mt-2">
-                      {postComments.length ? "Add your comment:" : "Be the first to comment!"}
-                    </h6>
-                    <form 
-                      className="mb-2" 
-                      onSubmit={ this.handleCommentSubmit }
-                      ref={(commentForm) => this.commentForm = commentForm}
-                    >
-                      <div className="form-group">
-                        <input className="form-control" type="text" name="author" placeholder="Your name" required />
-                      </div>
-                      <div className="form-group">
-                        <textarea 
-                          className="form-control" 
-                          name="body"
-                          rows="3"
-                          placeholder="Your comment"
-                          required
-                        ></textarea>
-                      </div>
-                      <button className="card-link btn btn-primary">Add Comment</button>
-                    </form>
-                  </li>
-                </ul>
-              </div>
+              <PostComments 
+                comments={postComments}
+                onNewComment={this.handleNewComment}
+              />
             )}
 
+          </div>
+        ) : (
+          <div className="PostListView--no-posts card bg-light">
+            <div className="card-body text-center">
+              This post doesn't exist has been removed.
+            </div>
           </div>
         )}
       </article>
