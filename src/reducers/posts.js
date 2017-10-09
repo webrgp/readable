@@ -1,16 +1,23 @@
 import { 
   LOAD_POSTS,
+  LOAD_NEW_POST,
   VOTE
 } from '../actions/actionTypes';
 
 const posts = (state = {}, action) => {
-  const { posts } = action;
+  const { posts, post } = action;
   switch (action.type) {
     case LOAD_POSTS:
       return {
         ...state,
         posts
       };
+    
+    case LOAD_NEW_POST:
+      return {
+        ...state,
+        posts: state.posts.concat(post)
+      }
     
     case VOTE:
       const { id, score } = action;
