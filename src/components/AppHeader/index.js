@@ -26,7 +26,7 @@ class AppHeader extends Component {
           to='/'
           className='navbar-brand'
           alt='Readable'
-          onClick={ () => { this.handleLinkClick('none') } }
+          onClick={ () => { this.handleLinkClick(false) } }
         >Readable</Link>
         <div className="navbar-nav-scroll">
           <ul className="flex-row navbar-nav">

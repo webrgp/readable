@@ -43,12 +43,10 @@ class VoteControl extends Component {
   }
 }
 
-
 VoteControl.propTypes = propTypes;
-
 
 const mapStateToProps  = ({ vote }, ownProps) => ({
   vote
-})
+});
 
 export default connect(mapStateToProps, { postVote })(VoteControl)

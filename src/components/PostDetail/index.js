@@ -32,7 +32,7 @@ class PostDetail extends Component {
 
   render () {
 
-    const { post, comments } = this.props;
+    const { post, comments, history } = this.props;
 
     const postComments = comments[ post.id ];
 
@@ -50,7 +50,7 @@ class PostDetail extends Component {
             </div>
 
             <div className="card-footer">
-              <PostControls post={post} />
+              <PostControls post={post} history={history} />
             </div>
 
             {postComments && postComments.length > 0 && (

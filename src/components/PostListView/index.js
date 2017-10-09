@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import SortControl from '../SortControl';
 import PostItem from '../PostItem';
 
-import * as postsActions from '../../actions/posts';
+import { selectCategory } from '../../actions/categories';
+import { fetchPosts } from '../../actions/posts';
 
 import './PostListView.css';
 
@@ -72,4 +73,4 @@ const mapStateToProps  = ({ posts, sort }) => ({
   posts, sort
 })
 
-export default connect(mapStateToProps, postsActions)(PostListView)
+export default connect(mapStateToProps, { fetchPosts, selectCategory })(PostListView)

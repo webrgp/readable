@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { removePost } from '../../actions/post';
 import VoteControl from '../VoteControl';
 import CommentsCountCountrol from '../CommentsCountCountrol';
 import EditDeleteControls from '../EditDeleteControls';
 
-export default class PostControls extends Component {
+class PostControls extends Component {
 
   handleDeletePost = () => {
-    console.log('Delete post id: ' + this.props.post.id);
+    this.props.removePost(this.props.post).then( () => {
+      if( this.props.categories.selectedCategory )
+        this.props.history.push(`/${this.props.categories.selectedCategory}`)
+      else
+        this.props.history.push('/');
+    });    
   }
 
   handleEditPost = () => {
@@ -31,3 +39,9 @@ export default class PostControls extends Component {
     );
   }
 }
+
+const mapStateToProps  = ({ categories }) => ({
+  categories
+});
+
+export default withRouter(connect(mapStateToProps, { removePost })(PostControls))

@@ -1,5 +1,6 @@
 import { 
-  LOAD_POST
+  LOAD_POST,
+  DELETE_POST
 } from '../actions/actionTypes';
 
 const post = (state = {}, action) => {
@@ -10,6 +11,9 @@ const post = (state = {}, action) => {
         ...state,
         ...post
       };
+
+    case DELETE_POST:
+      return {};
 
     default:
       return state;

@@ -2,7 +2,8 @@ import * as ReadableAPI from '../utils/ReadableAPI';
 
 import { 
   LOAD_POST,
-  LOAD_NEW_POST
+  LOAD_NEW_POST,
+  DELETE_POST
 } from './actionTypes'
 
 // LOAD_POST
@@ -27,4 +28,16 @@ export const addNewPost = ( post ) => dispatch => (
   ReadableAPI
       .addPost( post )
       .then(post => dispatch(loadNewPost(post)))
+);
+
+// DELETE_POST
+export const deletePost = post => ({
+  type: DELETE_POST,
+  post
+});
+
+export const removePost = ( post ) => dispatch => (
+  ReadableAPI
+      .removePost( post.id )
+      .then(dispatch(deletePost(post)))
 );
