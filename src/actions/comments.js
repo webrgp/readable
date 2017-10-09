@@ -30,7 +30,7 @@ export const loadNewComment = (comment) => {
 export const addNewComment = ( comment ) => dispatch => (
   ReadableAPI
       .addNewComment( comment )
-      .then(dispatch(loadNewComment(comment)))
+      .then( data => dispatch(loadNewComment( data )))
 );
 
 // DELETE_COMMENT
