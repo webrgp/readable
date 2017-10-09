@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import FormSerialize from 'form-serialize';
+import uuid from 'uuid';
 import * as postActions from '../../actions/post';
 import './PostAdd.css';
 
@@ -22,7 +24,14 @@ class PostAdd extends Component {
 
   handlePostSubmit = ( event ) => {
     event.preventDefault();
-    console.log(event);
+    const serializedPost = FormSerialize(event.target, {hash: true});
+    const postId = uuid();
+    const post = {
+      ...serializedPost,
+      category: this.state.selectedCategory,
+      id: postId
+    }
+    console.log(post);
   }
 
   render () {
@@ -49,7 +58,7 @@ class PostAdd extends Component {
                 <label htmlFor="body">Content</label>
                 <textarea 
                   className="form-control" 
-                  name="title" 
+                  name="body"
                   rows="3"
                   required
                   placeholder="lorem ipsum..."
