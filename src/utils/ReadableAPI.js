@@ -36,6 +36,13 @@ export const addPost = ( post ) => {
     .then(data => data)
 }
 
+export const removePost = (id) => 
+  fetch(`${apiUrl}/posts/${id}`, { 
+    method: 'DELETE',
+    headers 
+  }).then(res => res.json())
+    .then(data => data)
+
 export const fetchPostComments = (id) => 
   fetch(`${apiUrl}/posts/${id}/comments`, { headers })
     .then(res => res.json())
