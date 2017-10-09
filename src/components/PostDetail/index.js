@@ -73,7 +73,9 @@ class PostDetail extends Component {
             {postComments && (
               <div className="mt-2">
                 <div className="card-body">
-                  <h6 className="card-subtitle text-muted">Comments ({postComments.length})</h6>
+                  <h6 className="card-subtitle text-muted">
+                    {postComments.length ? `Comments (${postComments.length})` : "No comments"}
+                  </h6>
                 </div>
                 <ul className="list-group list-group-flush">
                   { this.sortCommentsByDate(postComments).map( comment => (
@@ -86,7 +88,9 @@ class PostDetail extends Component {
                     </li>
                   ))}
                   <li className="list-group-item bg-light">
-                    <h6 className="mb-4 mt-2">Add your comment:</h6>
+                    <h6 className="mb-4 mt-2">
+                      {postComments.length ? "Add your comment:" : "Be the first to comment!"}
+                    </h6>
                     <form 
                       className="mb-2" 
                       onSubmit={ this.handleCommentSubmit }
