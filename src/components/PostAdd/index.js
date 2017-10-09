@@ -31,7 +31,8 @@ class PostAdd extends Component {
       category: this.state.selectedCategory,
       id: postId
     }
-    console.log(post);
+    this.props.addNewPost( post );
+    this.props.history.push('/' + this.state.selectedCategory + '/' + post.id);
   }
 
   render () {
