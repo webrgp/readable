@@ -21,11 +21,9 @@ const posts = (state = {}, action) => {
       };
     
     case DELETE_POST:
-      const filteredOutPosts = state.posts.filter( p => p.id !== post.id );
-      console.log(post, filteredOutPosts);      
       return {
         ...state,
-        posts: filteredOutPosts
+        posts: state.posts.filter( p => p.id !== post.id )
       };
     
     case VOTE:
