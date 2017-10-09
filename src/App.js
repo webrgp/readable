@@ -4,6 +4,8 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import AppHeader from './components/AppHeader';
 import PostListView from './components/PostListView';
 import PostDetail from './components/PostDetail';
+import PostAdd from './components/PostAdd';
+
 
 class App extends Component {
 
@@ -16,9 +18,7 @@ class App extends Component {
         </Switch>
         <Switch>
           <Route exact path='/' component={PostListView} />
-          <Route exact path="/new" render={() => (
-            <div>New Post</div>
-          )} />
+          <Route exact path="/new" component={PostAdd} />
           <Route exact path="/:category" component={PostListView} />
           <Route exact path="/:category/:id" component={PostDetail} />
         </Switch>
