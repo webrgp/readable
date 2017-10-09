@@ -6,6 +6,9 @@ import { faThumbsUp, faThumbsDown } from '@fortawesome/fontawesome-free-solid'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import './VoteControl.css';
 
+/**
+ * entry can be either a post or a commnent
+ */
 const propTypes = {
   entry: PropTypes.object
 };
