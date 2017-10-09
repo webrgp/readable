@@ -14,13 +14,13 @@ const headers = {
 export const fetchCategories = () =>
   fetch(`${apiUrl}/categories`, { headers })
     .then(res => res.json())
-    .then(data => data.categories)
+    .then(data => data.categories);
 
     
 export const fetchPost = (id) => 
   fetch(`${apiUrl}/posts/${id}`, { headers })
     .then(res => res.json())
-    .then(data => data)
+    .then(data => data);
 
 export const addPost = ( post ) => {
   const postData = {
@@ -33,19 +33,33 @@ export const addPost = ( post ) => {
     body: JSON.stringify(postData),
     headers
   }).then(res => res.json())
-    .then(data => data)
+    .then(data => data);
 }
 
 export const removePost = (id) => 
   fetch(`${apiUrl}/posts/${id}`, { 
     method: 'DELETE',
     headers 
-  })
+  });
 
 export const fetchPostComments = (id) => 
   fetch(`${apiUrl}/posts/${id}/comments`, { headers })
     .then(res => res.json())
-    .then(data => data)
+    .then(data => data);
+
+export const addComment = ( comment ) => {
+  const commentData = {
+    ...comment,
+    timestamp: new Date().getTime()
+  };
+
+  return fetch(`${apiUrl}/comments`, {
+    method: "POST", 
+    body: JSON.stringify(commentData),
+    headers
+  }).then(res => res.json())
+    .then(data => data);
+}
 
 export const fetchPosts = (filter) => {
   const url = filter ? `${apiUrl}/${filter}/posts` : `${apiUrl}/posts`

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FormSerialize from 'form-serialize';
 import uuid from 'uuid';
-import * as postActions from '../../actions/post';
+import { fetchPost } from '../../actions/post';
+import { addNewComment } from '../../actions/comments';
 import { fromNow, dateTimeFormat } from '../../utils/helpers';
 import PostControls from '../PostControls';
 import CommentControls from '../CommentControls';
@@ -42,6 +43,7 @@ class PostDetail extends Component {
       id: commentId,
       parentId: postId
     }
+    this.props.addNewComment(comment);
   }
 
   render () {
@@ -84,7 +86,11 @@ class PostDetail extends Component {
                   ))}
                   <li className="list-group-item bg-light">
                     <h6 className="mb-4 mt-2">Add your comment:</h6>
-                    <form className="mb-2" onSubmit={ this.handleCommentSubmit }>
+                    <form 
+                      className="mb-2" 
+                      onSubmit={ this.handleCommentSubmit }
+                      ref={(commentForm) => this.commentForm = commentForm}
+                    >
                       <div className="form-group">
                         <input className="form-control" type="text" name="author" placeholder="Your name" required />
                       </div>
@@ -116,4 +122,4 @@ const mapStateToProps  = ({ post, comments }) => ({
   comments
 })
 
-export default connect(mapStateToProps, postActions)(PostDetail)
+export default connect(mapStateToProps, { fetchPost, addNewComment })(PostDetail)

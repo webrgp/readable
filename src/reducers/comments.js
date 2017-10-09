@@ -1,5 +1,6 @@
 import { 
-  LOAD_POST_COMMENTS 
+  LOAD_POST_COMMENTS,
+  LOAD_NEW_COMMENT
 } from '../actions/actionTypes';
 
 const comments = (state = {}, action) => {
@@ -10,7 +11,12 @@ const comments = (state = {}, action) => {
         ...state,
         [parentId]: comments
       } : { ...state };
-
+    case LOAD_NEW_COMMENT:
+      const { comment } = action;
+      return comment.parentId !== undefined ? {
+        ...state,
+        [comment.parentId]: state[comment.parentId].concat(comment)
+      } : { ...state };
     default:
       return state;
   }
