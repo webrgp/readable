@@ -47,7 +47,7 @@ export const fetchPostComments = (id) =>
     .then(res => res.json())
     .then(data => data);
 
-export const addComment = ( comment ) => {
+export const addNewComment = ( comment ) => {
   const commentData = {
     ...comment,
     timestamp: new Date().getTime()
@@ -60,6 +60,12 @@ export const addComment = ( comment ) => {
   }).then(res => res.json())
     .then(data => data);
 }
+
+export const removeComment = (id) => 
+  fetch(`${apiUrl}/comments/${id}`, { 
+    method: 'DELETE',
+    headers 
+  });
 
 export const fetchPosts = (filter) => {
   const url = filter ? `${apiUrl}/${filter}/posts` : `${apiUrl}/posts`

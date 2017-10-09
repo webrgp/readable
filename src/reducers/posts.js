@@ -28,14 +28,19 @@ const posts = (state = {}, action) => {
     
     case VOTE:
       const { id, score } = action;
-      const votedPosts = state.posts.map((p) => {
-        if (p.id === id) { p.voteScore = score }
-        return p;
-      });
-      return {
-        ...state,
-        posts: votedPosts
-      };
+      if ( state.posts !== undefined ) {
+        const votedPosts = state.posts.map((p) => {
+          if (p.id === id) { p.voteScore = score }
+          return p;
+        });
+        return {
+          ...state,
+          posts: votedPosts
+        };
+      } else {
+        return state;
+      }
+      
 
     default:
       return state;

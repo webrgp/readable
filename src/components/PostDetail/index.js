@@ -44,6 +44,7 @@ class PostDetail extends Component {
       parentId: postId
     }
     this.props.addNewComment(comment);
+    this.commentForm.reset();
   }
 
   render () {
