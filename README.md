@@ -11,6 +11,8 @@ node server
 
 ## App
 ```sh
+git clone https://github.com/webrgp/readable.git
+cd readable
 npm install
 npm start
 ```
