@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { removePost } from '../../actions/post';
+import { removePost, loadPost } from '../../actions/post';
 import VoteControl from '../VoteControl';
 import CommentsCountCountrol from '../CommentsCountCountrol';
 import EditDeleteControls from '../EditDeleteControls';
@@ -18,7 +18,7 @@ class PostControls extends Component {
   }
 
   handleEditPost = () => {
-    console.log('Edit post id: ' + this.props.post.id);
+    this.props.history.push(`/edit/${this.props.post.id}`);
   }
 
   render () {
@@ -44,4 +44,4 @@ const mapStateToProps  = ({ categories }) => ({
   categories
 });
 
-export default withRouter(connect(mapStateToProps, { removePost })(PostControls))
+export default withRouter(connect(mapStateToProps, { removePost, loadPost })(PostControls))

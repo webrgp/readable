@@ -18,6 +18,14 @@ export const fetchPost = (id) => dispatch => (
       .then(post => dispatch(loadPost(post)))
 );
 
+export const updatePost = post => dispatch => (
+  ReadableAPI
+      .updatePost(post)
+      .then(data => dispatch(loadPost(data)))
+);
+
+
+
 // LOAD_NEW_POST
 export const loadNewPost = post => ({
   type: LOAD_NEW_POST,

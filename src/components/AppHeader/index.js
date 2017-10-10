@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import * as categoryActions from '../../actions/categories';
+import { fetchCategories, selectCategory } from '../../actions/categories';
 
 import './AppHeader.css';
 
@@ -12,40 +12,34 @@ class AppHeader extends Component {
     this.props.fetchCategories();
   }
 
-  handleLinkClick = (cat) => {
-    this.props.selectCategory(cat);
-  }
-
   render () {
 
     const { categories } = this.props.categories;
-
+    const routeCategory = this.props.match.params.category;
     return (
       <nav className="AppHeader flex-column flex-md-row bd-navbar navbar navbar-expand navbar-light">
         <Link 
           to='/'
           className='navbar-brand'
           alt='Readable'
-          onClick={ () => { this.handleLinkClick(false) } }
         >Readable</Link>
         <div className="navbar-nav-scroll">
           <ul className="flex-row navbar-nav">
             { categories !== undefined && categories.map( category => (
-              <li key={category.path} className="nav-item">
-                <NavLink
+              <li key={category.path} className={ 
+                "nav-item" + (routeCategory === category.name ? " active" : "")
+              }>
+                <Link
                   className="nav-link"
-                  exact
                   to={`/${category.path}`}
-                  onClick={ () => { this.handleLinkClick(category.name) } }
-                >{category.name}</NavLink>
+                >{category.name}</Link>
               </li>
             ))}
             <li className="nav-item">
-              <NavLink
-                exact
+              <Link
                 to='/new'
                 className="nav-link"
-              >new post</NavLink>
+              >new post</Link>
             </li>
           </ul>
         </div>
@@ -59,4 +53,4 @@ const mapStateToProps  = ({ categories, selectedCategory }) => ({
   selectedCategory
 })
 
-export default connect(mapStateToProps, categoryActions)(AppHeader);
+export default connect(mapStateToProps, { fetchCategories, selectCategory })(AppHeader);

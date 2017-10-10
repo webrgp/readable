@@ -46,6 +46,20 @@ export const addPost = post => {
     .then(data => data);
 }
 
+export const updatePost = post => {
+  const postData = {
+    ...post,
+    timestamp: new Date().getTime()
+  };
+
+  return fetch(`${apiUrl}/posts/${post.id}`, {
+    method: "PUT", 
+    body: JSON.stringify(postData),
+    headers
+  }).then(res => res.json())
+    .then(data => data);
+}
+
 export const removePost = id => 
   fetch(`${apiUrl}/posts/${id}`, { 
     method: 'DELETE',
@@ -89,9 +103,7 @@ export const updateComment = comment => {
     body: JSON.stringify(commentData),
     headers
   }).then(res => res.json())
-    .then(data => {
-      return data;
-    });
+    .then(data => data);
 }
 
 

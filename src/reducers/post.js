@@ -9,11 +9,14 @@ const post = (state = {}, action) => {
     case LOAD_POST:
       return {
         ...state,
-        ...post
+        post
       };
 
     case DELETE_POST:
-      return {};
+      return {
+        ...state,
+        post: undefined
+      };
 
     default:
       return state;

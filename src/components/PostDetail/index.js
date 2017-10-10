@@ -40,8 +40,7 @@ class PostDetail extends Component {
   render () {
 
     const { post, comments, history } = this.props;
-
-    const postComments = comments[ post.id ];
+    const postComments = comments[ post.id ] || [];
 
     return (
       <article className="PostDetail container">
@@ -81,7 +80,7 @@ class PostDetail extends Component {
 }
 
 const mapStateToProps  = ({ post, comments }) => ({
-  post, 
+  post: post.post ? post.post : post,
   comments
 })
 

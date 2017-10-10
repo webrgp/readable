@@ -1,5 +1,6 @@
 import { 
   LOAD_POSTS,
+  LOAD_POST,
   LOAD_NEW_POST,
   DELETE_POST,
   VOTE
@@ -19,6 +20,12 @@ const posts = (state = {}, action) => {
         ...state,
         posts: state.posts.concat(post)
       };
+    
+    case LOAD_POST:
+      return state.posts !== undefined ? {
+        ...state,
+        posts: state.posts.map( p => p.id === post.id ? post : p)
+      } : state;
     
     case DELETE_POST:
       return {

@@ -1,0 +1,15 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins/breakpoints";
+
+.PostForm {
+
+  .btn {
+    cursor: pointer;
+  }
+
+  .card-footer {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  }
+
+}
