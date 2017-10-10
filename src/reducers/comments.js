@@ -12,19 +12,19 @@ const comments = (state = {}, action) => {
       return parentId !== undefined ? {
         ...state,
         [parentId]: comments
-      } : { ...state };
+      } : state;
 
     case LOAD_NEW_COMMENT:
       return comment.parentId !== undefined ? {
         ...state,
         [comment.parentId]: state[comment.parentId].concat(comment)
-      } : { ...state };
+      } : state;
     
     case DELETE_COMMENT:
       return comment.parentId !== undefined ? {
         ...state,
         [comment.parentId]: state[comment.parentId].filter( c => c.id !== comment.id )
-      } : { ...state };
+      } : state;
 
     default:
       return state;

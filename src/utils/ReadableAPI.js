@@ -11,12 +11,22 @@ const headers = {
   'Authorization': token
 }
 
+// Categories
 export const fetchCategories = () =>
   fetch(`${apiUrl}/categories`, { headers })
     .then(res => res.json())
     .then(data => data.categories);
 
-    
+
+// Posts
+export const fetchPosts = (filter) => {
+  const url = filter ? `${apiUrl}/${filter}/posts` : `${apiUrl}/posts`
+  return fetch(url, { headers })
+    .then(res => res.json())
+    .then(data => data)
+}
+ 
+// Post
 export const fetchPost = (id) => 
   fetch(`${apiUrl}/posts/${id}`, { headers })
     .then(res => res.json())
@@ -42,6 +52,7 @@ export const removePost = (id) =>
     headers 
   });
 
+// Comments
 export const fetchPostComments = (id) => 
   fetch(`${apiUrl}/posts/${id}/comments`, { headers })
     .then(res => res.json())
@@ -66,13 +77,6 @@ export const removeComment = (id) =>
     method: 'DELETE',
     headers 
   });
-
-export const fetchPosts = (filter) => {
-  const url = filter ? `${apiUrl}/${filter}/posts` : `${apiUrl}/posts`
-  return fetch(url, { headers })
-    .then(res => res.json())
-    .then(data => data)
-}
 
 /**
  * Voting function for both posts and comments

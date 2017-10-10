@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { removeComment } from '../../actions/comments';
+import { toggleEditMode } from '../../actions/editMode';
 import VoteControl from '../VoteControl';
 import EditDeleteControls from '../EditDeleteControls';
 import { fromNow } from '../../utils/helpers';
 
 class CommentControls extends Component {
-
+  
   handleDeleteComment = () => {
     this.props.removeComment(this.props.comment);   
   }
 
   handleEditComment = () => {
-    console.log('Edit comment id: ' + this.props.comment.id);
+    this.props.toggleEditMode(this.props.comment.id);
   }
 
   render () {
@@ -37,4 +38,4 @@ class CommentControls extends Component {
   }
 };
 
-export default withRouter(connect(null, { removeComment })(CommentControls))
+export default withRouter(connect(null, { removeComment, toggleEditMode })(CommentControls))

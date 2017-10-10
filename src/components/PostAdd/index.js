@@ -19,6 +19,7 @@ class PostAdd extends Component {
 
   // return to previous place
   cancelPostAdd = ( event ) => {
+    event.preventDefault();
     this.props.history.goBack();
   }
 

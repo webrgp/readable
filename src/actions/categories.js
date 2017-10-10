@@ -5,6 +5,7 @@ import {
   SELECT_CATEGORY 
 } from './actionTypes'
 
+// LOAD_CATEGORIES
 export const loadCategories = categories => ({
   type: LOAD_CATEGORIES,
   categories
@@ -17,7 +18,7 @@ export const fetchCategories = () => dispatch => (
       .then(categories => dispatch(loadCategories(categories)))
 );
 
-
+// SELECT_CATEGORY
 export const selectCategory = (selectedCategory) => {
   return {
     type: SELECT_CATEGORY,

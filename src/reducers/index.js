@@ -6,6 +6,7 @@ import comments from './comments';
 import post from './post';
 import vote from './vote';
 import sort from './sort';
+import editMode from './editMode';
 
 export default combineReducers({
   categories,
@@ -13,5 +14,6 @@ export default combineReducers({
   comments,
   post,
   vote,
-  sort
+  sort,
+  editMode
 });

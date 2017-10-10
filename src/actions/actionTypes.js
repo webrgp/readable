@@ -8,4 +8,5 @@ export const LOAD_POSTS = 'LOAD_POSTS';
 export const LOAD_POST_COMMENTS = 'LOAD_POST_COMMENTS';
 export const LOAD_NEW_COMMENT = 'LOAD_NEW_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const SET_EDIT_MODE = 'SET_EDIT_MODE';
 export const SET_SORT = 'SET_SORT';
