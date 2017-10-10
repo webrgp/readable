@@ -1,25 +1,47 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { toggleEditMode } from '../../actions/editMode';
+import FormSerialize from 'form-serialize';
+import { updateComment } from '../../actions/comments';
 import CommentControls from '../CommentControls';
 
 class CommentItem extends Component {
 
+  state = {
+    isEditing: false
+  }
+
   cancelCommentEdit = ( event ) => {
     event.preventDefault();
-    this.props.toggleEditMode(this.props.comment.id);
+    this.setState({
+      isEditing: false
+    })
+  }
+
+  showEditComment = () => {
+    this.setState({
+      isEditing: true
+    })
   }
 
   handleCommentUpdate = ( event ) => {
     event.preventDefault();
-    console.log(event.target);
+    const serializedComment = FormSerialize(event.target, {hash: true});
+    const updatedComment = {
+      ...this.props.comment,
+      ...serializedComment
+    };
+    this.props.updateComment(updatedComment).then( data => {
+      this.setState({
+        isEditing: false
+      })
+    });
   }
 
   render () {
 
-    const { comment, editMode } = this.props;    
+    const { comment } = this.props;    
 
-    return editMode[comment.id] ? (
+    return this.state.isEditing ? (
       <li 
         key={comment.id}
         className="CommentItem list-group-item bg-light"
@@ -64,7 +86,7 @@ class CommentItem extends Component {
         className="CommentItem list-group-item"
       >
         <strong>{comment.author}: </strong> {comment.body}
-        <CommentControls comment={comment} />
+        <CommentControls comment={comment} editClickHandler={ this.showEditComment } />
       </li>
     );
   }
@@ -74,4 +96,4 @@ const mapStateToProps  = ({ editMode }) => ({
   editMode
 });
 
-export default connect(mapStateToProps, {toggleEditMode})(CommentItem)
+export default connect(mapStateToProps, { updateComment })(CommentItem)

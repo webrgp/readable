@@ -2,7 +2,7 @@ import * as ReadableAPI from '../utils/ReadableAPI';
 
 import { 
   LOAD_POST_COMMENTS,
-  LOAD_NEW_COMMENT,
+  LOAD_COMMENT,
   DELETE_COMMENT
 } from './actionTypes';
 
@@ -19,10 +19,10 @@ export const fetchPostComments = parentId => dispatch => (
       .then(comments => dispatch(loadPostComments(parentId, comments)))
 );
 
-// LOAD_NEW_COMMENT
-export const loadNewComment = (comment) => {
+// LOAD_COMMENT
+export const loadComment = (comment) => {
   return {
-    type: LOAD_NEW_COMMENT,
+    type: LOAD_COMMENT,
     comment
   }
 }
@@ -30,7 +30,7 @@ export const loadNewComment = (comment) => {
 export const addNewComment = ( comment ) => dispatch => (
   ReadableAPI
       .addNewComment( comment )
-      .then( data => dispatch(loadNewComment( data )))
+      .then( data => dispatch(loadComment( data )))
 );
 
 // DELETE_COMMENT
@@ -43,4 +43,11 @@ export const removeComment = ( comment ) => dispatch => (
   ReadableAPI
       .removeComment( comment.id )
       .then(dispatch(deleteComment(comment)))
+);
+
+// UPDATE_COMMENT
+export const updateComment = ( comment ) => dispatch => (
+  ReadableAPI
+      .updateComment( comment )
+      .then( data => dispatch(loadComment( data )))
 );

@@ -1,6 +1,6 @@
 import { 
   LOAD_POST_COMMENTS,
-  LOAD_NEW_COMMENT,
+  LOAD_COMMENT,
   DELETE_COMMENT
 } from '../actions/actionTypes';
 
@@ -9,22 +9,25 @@ const comments = (state = {}, action) => {
   switch (action.type) {
     case LOAD_POST_COMMENTS:
       const { parentId, comments } = action;
-      return parentId !== undefined ? {
+      return {
         ...state,
         [parentId]: comments
-      } : state;
+      };
 
-    case LOAD_NEW_COMMENT:
-      return comment.parentId !== undefined ? {
+    case LOAD_COMMENT:
+      const existingComment = state[comment.parentId].filter( c => c.id === comment.id ).length;
+      return {
         ...state,
-        [comment.parentId]: state[comment.parentId].concat(comment)
-      } : state;
+        [comment.parentId]: existingComment ? 
+          state[comment.parentId].map( c => c.id === comment.id ? comment : c)
+          : state[comment.parentId].concat(comment)
+      };
     
     case DELETE_COMMENT:
-      return comment.parentId !== undefined ? {
+      return {
         ...state,
         [comment.parentId]: state[comment.parentId].filter( c => c.id !== comment.id )
-      } : state;
+      };
 
     default:
       return state;

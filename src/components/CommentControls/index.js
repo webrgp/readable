@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { removeComment } from '../../actions/comments';
-import { toggleEditMode } from '../../actions/editMode';
 import VoteControl from '../VoteControl';
 import EditDeleteControls from '../EditDeleteControls';
 import { fromNow } from '../../utils/helpers';
@@ -14,7 +13,7 @@ class CommentControls extends Component {
   }
 
   handleEditComment = () => {
-    this.props.toggleEditMode(this.props.comment.id);
+    this.props.editClickHandler();
   }
 
   render () {
@@ -38,4 +37,4 @@ class CommentControls extends Component {
   }
 };
 
-export default withRouter(connect(null, { removeComment, toggleEditMode })(CommentControls))
+export default withRouter(connect(null, { removeComment })(CommentControls))
