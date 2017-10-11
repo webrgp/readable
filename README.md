@@ -13,6 +13,6 @@ node server
 ```sh
 git clone https://github.com/webrgp/readable.git
 cd readable
-npm install
-npm start
+yarn
+yarn start
 ```
