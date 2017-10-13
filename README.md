@@ -1,5 +1,7 @@
 # Udacity Project: Readable 
 
+React / Redux project for React Nanodegree from Udacity.
+
 ## Server
 
 ```sh
